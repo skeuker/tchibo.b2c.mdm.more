@@ -1,0 +1,112 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:s="sap.f.semantic"
+	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="tchibo.b2c.mdm.more.ui.controller.Worklist">
+	<f:DynamicPage class="sapUiNoContentPadding" busy="{worklist>/loadBusy}">
+		<f:header>
+			<f:DynamicPageHeader busy="{worklistView>/filterBusy}">
+				<f:content>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" persistencyKey="UniqueAndStablePersistencyKey" entitySet=">/message"
+						search="_onLoadFilters" considerSelectionVariants="true" beforeVariantFetch="onBeforeVariantFetch" afterVariantLoad="onAfterVariantLoad">
+						<smartFilterBar:controlConfiguration >
+							<smartFilterBar:ControlConfiguration id="idControlConfigurationClusterType" key="slVClusterType" label="{i18n>worklistClusterType}"
+								groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="slVClusterType" customData:hasValue="true"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="idControlConfigurationCluster" key="slVCluster" label="{i18n>worklistCluster}" groupId="_BASIC"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="slVCluster" customData:hasValue="true"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="idControlConfigurationError" key="slMClass" label="{i18n>worklistMclass}" groupId="_BASIC"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="slMClass" customData:hasValue="true"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="slPHTyp" label="{i18n>worklistPhtyp}" groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="slPHTyp" customData:hasValue="true"
+										items="{ path: 'appView>/kanal_filter',templateShareable:false, sorter: { path: 'kanal', descending: false } }">
+										<core:Item text="{ path: 'appView>text'}" key="{ path: 'appView>kanal'}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="contolslKalwo" key="slKalwo" label="{i18n>filterHVK}" groupId="_BASIC" mandatory="mandatory"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Input id="slKalwo" customData:hasValue="true" maxLength="6" placeholder="{i18n>calWeekPlaceholder}" liveChange=".calWeekInputChange"></Input>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="contolslKalwo_til" key="slKalwo_til" label="{i18n>worklistHvk_til}" groupId="_BASIC"
+								mandatory="mandatory" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Input id="slKalwo_til" customData:hasValue="true" maxLength="6" placeholder="{i18n>calWeekPlaceholder}" liveChange=".calWeekInputChange"></Input>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="slMagrv" label="{i18n>worklistArtgrp}" groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="slMagrv" customData:hasValue="true"
+										items="{ path: 'appView>/magrv_filter',templateShareable:false, sorter: { path: 'magrv', descending: false } }">
+										<core:Item text="{ path: 'appView>magrv'}" key="{ path: 'appView>magrv'}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="slVKOrg" label="{i18n>worklistVkorg}" groupId="_BASIC" mandatory="mandatory"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Select id="slVKOrg" customData:hasValue="true">
+										<core:Item text="{i18n>selectItemAll}" key=""/>
+										<core:Item text="0001" key="0001"/>
+										<core:Item text="0047" key="0047"/>
+										<core:Item text="0051" key="0051"/>
+										<core:Item text="0052" key="0052"/>
+										<core:Item text="0054" key="0054"/>
+										<core:Item text="0073" key="0073"/>
+										<core:Item text="0085" key="0085"/>
+									</Select>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="slVMtart" label="{i18n>worklistMtart}" groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="slVMtart" customData:hasValue="true">
+										<core:Item text="13ST" key="13ST"/>
+										<core:Item text="26ST" key="26ST"/>
+										<core:Item text="31ST" key="31ST"/>
+										<core:Item text="11ST" key="11ST"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="slVMatnr" label="{i18n>worklistMatnrFilter}" groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiInput id="slVMatnr" width="auto" tokens="{worklistView>/mulitsearchMatnr}" showValueHelp="false" customData:hasValue="true">
+										<tokens>
+											<Token text="{text}" key="{key}"/>
+										</tokens>
+									</MultiInput>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="slVTdbnr" label="{i18n>worklistTdbnr}" groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<MultiInput id="slVTdbnr" width="auto" tokens="{worklistView>/mulitsearchTdbnr}" showValueHelp="false" customData:hasValue="true">
+										<tokens>
+											<Token text="{text}" key="{key}"/>
+										</tokens>
+									</MultiInput>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<core:Fragment fragmentName="tchibo.b2c.mdm.more.ui.view.fragments.WorklistTable" type="XML"/>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

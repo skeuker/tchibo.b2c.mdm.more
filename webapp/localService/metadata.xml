@@ -1,0 +1,136 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm" Version="4.0">
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/></edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/></edmx:Reference>
+	<edmx:DataServices>
+		<Schema Namespace="com.sap.gateway.default.zb2c_mdm_more_odata.v0001" Alias="SAP__self">
+			<EntityType Name="Assortment">
+				<Key><PropertyRef Name="matnr"/><PropertyRef Name="vkorg"/><PropertyRef Name="kalwo"/><PropertyRef Name="kanal"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="18"/><Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kalwo" Type="Edm.String" Nullable="false" MaxLength="6"/><Property Name="kanal" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="dwerk" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="maktx" Type="Edm.String" Nullable="false" MaxLength="40"/><Property Name="magrv" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kbetr" Type="Edm.Double" Nullable="false"/><Property Name="konwa" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="tdbnr" Type="Edm.String" Nullable="false" MaxLength="7"/><Property Name="atyp" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="mtart" Type="Edm.String" Nullable="false" MaxLength="4"/></EntityType>
+			<EntityType Name="AssortmentError">
+				<Key><PropertyRef Name="matnr"/><PropertyRef Name="vkorg"/><PropertyRef Name="kalwo"/><PropertyRef Name="kanal"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="18"/><Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kalwo" Type="Edm.String" Nullable="false" MaxLength="6"/><Property Name="kanal" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="dwerk" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="maktx" Type="Edm.String" Nullable="false" MaxLength="40"/><Property Name="magrv" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kbetr" Type="Edm.Double" Nullable="false"/><Property Name="konwa" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="tdbnr" Type="Edm.String" Nullable="false" MaxLength="7"/><Property Name="atyp" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="mtart" Type="Edm.String" Nullable="false" MaxLength="4"/>
+				<NavigationProperty Name="Error" Type="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.Error"><OnDelete Action="None"/></NavigationProperty>
+			</EntityType>
+			<EntityType Name="AssortmentErrorOverview">
+				<Key><PropertyRef Name="matnr"/><PropertyRef Name="vkorg"/><PropertyRef Name="kalwo"/><PropertyRef Name="kanal"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="18"/><Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kalwo" Type="Edm.String" Nullable="false" MaxLength="6"/><Property Name="kanal" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="dwerk" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="magrv" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kbetr" Type="Edm.Double" Nullable="false"/><Property Name="konwa" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="tdbnr" Type="Edm.String" Nullable="false" MaxLength="7"/><Property Name="atyp" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="mtart" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="cluster" Type="Edm.String" Nullable="false" MaxLength="30"/><Property Name="rankError" Type="Edm.Int16" Nullable="false"/><Property Name="error" Type="Edm.String" Nullable="false" MaxLength="40"/><Property Name="clusterType" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="sumWarning" Type="Edm.Int16" Nullable="false"/><Property Name="sumError" Type="Edm.Int16" Nullable="false"/></EntityType>
+			<EntityType Name="Error">
+				<Key><PropertyRef Name="matnr"/><PropertyRef Name="vkorg"/><PropertyRef Name="kalwo"/><PropertyRef Name="kanal"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="18"/><Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="kalwo" Type="Edm.String" Nullable="false" MaxLength="6"/><Property Name="kanal" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="dwerk" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="cluster" Type="Edm.String" Nullable="false" MaxLength="30"/><Property Name="rankError" Type="Edm.Int16" Nullable="false"/><Property Name="clusterType" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="error" Type="Edm.String" Nullable="false" MaxLength="40"/></EntityType>
+			<EntityType Name="FilterCluster">
+				<Key><PropertyRef Name="cluster"/></Key><Property Name="cluster" Type="Edm.String" Nullable="false" MaxLength="30"/></EntityType>
+			<EntityType Name="FilterClusterType">
+				<Key><PropertyRef Name="clusterType"/></Key><Property Name="clusterType" Type="Edm.String" Nullable="false" MaxLength="5"/></EntityType>
+			<EntityType Name="FilterError">
+				<Key><PropertyRef Name="errors"/></Key><Property Name="errors" Type="Edm.String" Nullable="false" MaxLength="40"/></EntityType>
+			<EntityType Name="FilterKalwo">
+				<Key><PropertyRef Name="kalwo"/></Key><Property Name="kalwo" Type="Edm.String" Nullable="false" MaxLength="6"/></EntityType>
+			<EntityType Name="FilterKanal">
+				<Key><PropertyRef Name="kanal"/></Key><Property Name="kanal" Type="Edm.String" Nullable="false" MaxLength="10"/></EntityType>
+			<EntityType Name="FilterMagrv">
+				<Key><PropertyRef Name="magrv"/><PropertyRef Name="magrvtxt"/></Key><Property Name="magrv" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="magrvtxt" Type="Edm.String" Nullable="false" MaxLength="20"/></EntityType>
+			<EntityContainer Name="Container">
+				<EntitySet Name="AssortmentErrors" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.AssortmentError"><NavigationPropertyBinding Path="Error" Target="Errors"/></EntitySet><EntitySet Name="AssortmentErrorsOverviews" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.AssortmentErrorOverview"/><EntitySet Name="Assortments" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.Assortment"/><EntitySet Name="Errors" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.Error"/><EntitySet Name="FilterClusters" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.FilterCluster"/><EntitySet Name="FilterClusterTypes" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.FilterClusterType"/><EntitySet Name="FilterErrors" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.FilterError"/><EntitySet Name="FilterKalwos" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.FilterKalwo"/><EntitySet Name="FilterKanals" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.FilterKanal"/><EntitySet Name="FilterMagrvs" EntityType="com.sap.gateway.default.zb2c_mdm_more_odata.v0001.FilterMagrv"/></EntityContainer>
+			<Annotations Target="SAP__self.Container/AssortmentErrors">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/AssortmentErrorsOverviews">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/Assortments">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/Errors">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/FilterClusters">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/FilterClusterTypes">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/FilterErrors">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/FilterKalwos">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/FilterKanals">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/FilterMagrvs">
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record><PropertyValue Property="SelectSupported" Bool="true"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

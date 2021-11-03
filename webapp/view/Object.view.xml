@@ -1,0 +1,334 @@
+<mvc:View controllerName="tchibo.b2c.mdm.more.ui.controller.Object" xmlns="sap.m" xmlns:xp="sap.uxap" xmlns:ui="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<xp:ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" enableLazyLoading="true"
+		preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<xp:headerTitle id="headerTitle">
+			<xp:ObjectPageDynamicHeaderTitle id="headerTitle2">
+				<xp:snappedHeading>
+					<Title text="{objectView>/overviewObject/maktx}"/>
+				</xp:snappedHeading>
+				<xp:expandedHeading>
+					<Title text="{objectView>/overviewObject/maktx}" class="sapUiTinyMarginEnd"/>
+				</xp:expandedHeading>
+			</xp:ObjectPageDynamicHeaderTitle>
+		</xp:headerTitle>
+		<xp:headerContent id="headerContent">
+			<FlexBox wrap="Wrap" fitContainer="true">
+				<VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="Artikelnummer:" class="sapUiTinyMarginEnd"/>
+						<Text
+							text="{ path: 'objectView>/overviewObject/matnr', type: 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 18}}"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="Bestellnummer:" class="sapUiTinyMarginEnd"/>
+						<Text text="{objectView>/overviewObject/tdbnr}"/>
+					</HBox>
+				</VBox>
+				<VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="Artikelart:" class="sapUiTinyMarginEnd"/>
+						<Text text="{objectView>/overviewObject/mtart}"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="ArtGrpPM:" class="sapUiTinyMarginEnd"/>
+						<Text text="{objectView>/overviewObject/magrv}"/>
+					</HBox>
+				</VBox>
+				<VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="Kennz. F/R:" class="sapUiTinyMarginEnd"/>
+						<Text text="{objectView>/overviewObject/atyp}"/>
+					</HBox>
+				</VBox>
+			</FlexBox>
+		</xp:headerContent>
+		<xp:sections>
+			<xp:ObjectPageSection titleUppercase="false" title="Meldungen">
+				<xp:subSections>
+					<xp:ObjectPageSubSection title="Meldungen" mode="Expanded" titleUppercase="false">
+						<xp:blocks>
+							<ui:Table id="errorTable" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop" enableColumnReordering="false" editable="false"
+								enableColumnFreeze="true" selectionMode="None" visibleRowCountMode="Fixed" minAutoRowCount="2" visibleRowCount="10"
+								showColumnVisibilityMenu="true" enableBusyIndicator="true">
+								<ui:columns>
+									<ui:Column id="idColumnErrorType" width="3%" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="clusterType"
+										filterProperty="clusterType" autoResizable="true">
+										<ui:template>
+											<core:Icon src="{ path : 'modelOdatav4>clusterType', formatter: '.formatter.getMessageIcon'}"
+												color="{path : 'modelOdatav4>clusterType', formatter: '.formatter.formatWorklistIcons'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnErrorCluster" width="auto" showSortMenuEntry="true" sortProperty="clusterError" autoResizable="true">
+										<Label id="idLabelErrorCluster" text="{i18n>columnErrorCluster}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>clusterError}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnErrorErrors" width="auto" showSortMenuEntry="true" sortProperty="error" autoResizable="true">
+										<Label id="idLabelErrorError" text="{i18n>columnErrorError}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>error}"/>
+										</ui:template>
+									</ui:Column>
+								</ui:columns>
+							</ui:Table>
+						</xp:blocks>
+					</xp:ObjectPageSubSection>
+				</xp:subSections>
+			</xp:ObjectPageSection>
+			<xp:ObjectPageSection titleUppercase="false" title="my section2">
+				<xp:subSections>
+					<xp:ObjectPageSubSection title="DC-Informationen" mode="Expanded" titleUppercase="false">
+						<xp:blocks>
+							<ui:Table id="idDcTable" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop" enableColumnReordering="false" editable="false"
+								enableColumnFreeze="true" selectionMode="None" visibleRowCountMode="Fixed" minAutoRowCount="2" visibleRowCount="10"
+								showColumnVisibilityMenu="true" selectionBehavior="Row" enableBusyIndicator="true">
+								<ui:columns>
+									<ui:Column id="idColumnmatnr" width="auto" showSortMenuEntry="true" sortProperty="vzwrk" autoResizable="true">
+										<Label id="idLabelDcmatnr" text="{i18n>columnmatnr}"/>
+										<ui:template>
+											<ObjectIdentifier
+												text="{path: 'modelOdatav4>matnrPosition', type: 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 18}}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcArtTitel" width="auto" showSortMenuEntry="true" sortProperty="maktx" filterProperty="maktx" autoResizable="true">
+										<Label id="idLabelTypeDcArtTitel" text="{i18n>columnDcarttitel}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>maktx}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumDcdisplay" width="auto" showSortMenuEntry="true" sortProperty="mtpos_mara" filterProperty="mtpos_mara" autoResizable="true">
+										<Label id="idLabelDcdisplay" text="{i18n>columndisplay}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>mtpos_mara}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcWerk" width="auto" showSortMenuEntry="true" sortProperty="vzwrk" autoResizable="true">
+										<Label id="idLabelDcWerkt" text="{i18n>columnDcWerk}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>vzwrk}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcRuestfrom" width="auto" showSortMenuEntry="true" sortProperty="kommistart" filterProperty="kommistart"
+										autoResizable="true">
+										<Label id="idLabelTypeDcRuestfrom" text="{i18n>columnDcRuestfrom}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>kommistart', formatter: '.formatter.DatumDe'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcRuestto" width="auto" showSortMenuEntry="true" sortProperty="kommiende" filterProperty="kommiende"
+										autoResizable="true">
+										<Label id="idLabelTypeRuestto" text="{i18n>columnDcRuestto}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>kommiende', formatter: '.formatter.DatumDe'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcsalesEnd" width="auto" showSortMenuEntry="true" sortProperty="salesEnd" filterProperty="salesEnd"
+										autoResizable="true">
+										<Label id="idLabelTypesalesEndo" text="{i18n>columnDcsalesEnd}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>salesEnd', formatter: '.formatter.DatumDe'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcQuantitity" width="auto" showSortMenuEntry="true" sortProperty="atp" filterProperty="atp" autoResizable="true">
+										<Label id="idLabelDcQunatitity" text="{i18n>columnDcQuantitiy}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>atp', formatter: '.formatter.numberZero'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcQQuantitiy" width="auto" showSortMenuEntry="true" sortProperty="q_quantity" filterProperty="q_quantity"
+										autoResizable="true">
+										<Label id="idLabelDcQQuantitiy" text="{i18n>columnDcQQuantitiy}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>q_quantity', formatter: '.formatter.numberZero'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnDcTransit" width="auto" showSortMenuEntry="true" sortProperty="transit" filterProperty="transit" autoResizable="true">
+										<Label id="idLabelDcTransit" text="{i18n>columnDcTransit}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>transit', formatter: '.formatter.numberZero'}"/>
+										</ui:template>
+									</ui:Column>
+								</ui:columns>
+							</ui:Table>
+						</xp:blocks>
+					</xp:ObjectPageSubSection>
+				</xp:subSections>
+			</xp:ObjectPageSection>
+			<xp:ObjectPageSection titleUppercase="false" title="my section3">
+				<xp:subSections>
+					<xp:ObjectPageSubSection title="WS-Informationen" mode="Expanded" titleUppercase="false">
+						<xp:blocks>
+							<ui:Table id="idWebTable" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop" enableColumnReordering="false" editable="false"
+								enableColumnFreeze="true" selectionMode="None" visibleRowCountMode="Fixed" minAutoRowCount="2" visibleRowCount="10"
+								showColumnVisibilityMenu="true" selectionBehavior="Row" enableBusyIndicator="true">
+								<ui:columns>
+									<ui:Column id="idColumnwebMatnr" width="100px" showSortMenuEntry="true" sortProperty="matnr" filterProperty="matnr" autoResizable="true">
+										<Label id="idLabelWebMatnr" text="{i18n>columnWebMatnr}"/>
+										<ui:template>
+											<ObjectIdentifier
+												text="{ path: 'modelOdatav4>matnrPosition', type: 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 18}}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnwebArtTitel" width="200px" showSortMenuEntry="true" sortProperty="maktx" filterProperty="maktx" autoResizable="true">
+										<Label id="idLabelTypeWebArtTitel" text="{i18n>columnWebArtTitel}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>maktx}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnwebdisplay" width="100px" showSortMenuEntry="true" sortProperty="mtpos" filterProperty="mtpos" autoResizable="true">
+										<Label id="idLabelTypeWebdisplay" text="{i18n>columnWebdisplay}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>mtpos}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebvkorg" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="vkorg"
+										filterProperty="vkorg" autoResizable="true">
+										<Label id="idLabelWebvrkog" text="{i18n>columnWebvkorg}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>vkorg} - {modelOdatav4>site}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnwebBCLock" width="100px" showSortMenuEntry="true" filterProperty="vmsta" showFilterMenuEntry="true"
+										sortProperty="vmsta" autoResizable="true">
+										<Label id="idLabelTypeWebBCLock" text="{i18n>columnWebBCLock}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>vmsta}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebWsBcLock" width="120px" showSortMenuEntry="true" showFilterMenuEntry="true"
+										sortProperty="isforcenotavailableimported" filterProperty="isforcenotavailableimported" autoResizable="true">
+										<Label id="idLabelWsBcLock" text="{i18n>columnWebWsBcLock}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>isforcenotavailableimported', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnwebPriceSap" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="price"
+										filterProperty="price" autoResizable="true">
+										<Label id="idLabelTypeWebPriceSap" text="{i18n>columnWebPriceSap}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>price} {appView>waer}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebZZkanal" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="zzkanal"
+										filterProperty="zzkanal" autoResizable="true">
+										<Label id="idLabelTypeZZkanal" text="{i18n>columnWebZZKanal}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>zzkanal}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnwebKalwo" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="kalwo"
+										filterProperty="kalwo" autoResizable="true">
+										<Label id="idLabelTypeWebKalwo" text="{i18n>columnWebKalwo}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>kalwo', formatter: '.formatter.betterDate'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebStart" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="salesstart"
+										filterProperty="salesstart" autoResizable="true">
+										<Label id="idLabelWebstart" text="{i18n>columnWebStart}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>salesstart', formatter: '.formatter.DatumDe'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebEnd" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="salesend"
+										filterProperty="salesend" autoResizable="true">
+										<Label id="idLabelWebEnd" text="{i18n>columnWebEnd}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>salesend', formatter: '.formatter.DatumDe'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnisavailable" width="120px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="isavailable"
+										filterProperty="isavailable" autoResizable="true">
+										<Label id="idLabelisavailable" text="{i18n>columnWebisAvailable}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>isavailable' , formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebExcludedSearch" width="150px" showSortMenuEntry="true" showFilterMenuEntry="true"
+										sortProperty="isexcludedinsearch" filterProperty="isexcludedinsearch" autoResizable="true">
+										<Label id="idLabelExcludedSearch" text="{i18n>columnWebExcludedSearch}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>isexcludedinsearch', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebExcludedCategory" width="120px" showSortMenuEntry="true" showFilterMenuEntry="true"
+										sortProperty="isexcludedfromcategoryassetlis" filterProperty="isexcludedfromcategoryassetlis" autoResizable="true">
+										<Label id="idLabelExcludedCategory" text="{i18n>columnWebExcludedCategory}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>isexcludedfromcategoryassetlis', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebVisible" width="130px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="productvisibility"
+										filterProperty="productvisibility" autoResizable="true">
+										<Label id="idLabelVisible" text="{i18n>columnWebVisible}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>productvisibility}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnextravisibility" width="130px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="extravisibility"
+										filterProperty="extravisibility" autoResizable="true">
+										<Label id="idLabelextravisibility" text="{i18n>columnWebextravisibility}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>extravisibility'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebVisibilityMan" width="110px" showSortMenuEntry="true" showFilterMenuEntry="true"
+										sortProperty="manualproductlivestatus" filterProperty="manualproductlivestatus" autoResizable="true">
+										<Label id="idLabelVisibilityMan" text="{i18n>columnWebVisibilityMan}"/>
+										<ui:template>
+											<ObjectIdentifier text="{modelOdatav4>manualproductlivestatus}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebNotAvailableEdited" width="130px" showSortMenuEntry="true" showFilterMenuEntry="true"
+										sortProperty="isforcenotavailableedited" filterProperty="isforcenotavailableedited" autoResizable="true">
+										<Label id="idLabelNotAvailableEdited" text="{i18n>columnWebNotAvailableEdited}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>isforcenotavailableedited', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebPicture" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="hasimage"
+										filterProperty="hasimage" autoResizable="true">
+										<Label id="idLabelPicture" text="{i18n>columnWebPicture}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>hasimage', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnTitel" width="80px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="hastitle"
+										filterProperty="hastitle" autoResizable="true">
+										<Label id="idLabelTitel" text="{i18n>columnWebTitel}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>hastitle', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWebText" width="80px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="hastext"
+										filterProperty="hastext" autoResizable="true">
+										<Label id="idLabelText" text="{i18n>columnWebText}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>hastext', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWePrice" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="hasprice"
+										filterProperty="hasprice" autoResizable="true">
+										<Label id="idLabelPrice" text="{i18n>columnWebPrice}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>hasprice', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column id="idColumnWeTestproduct" width="100px" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="istestproduct"
+										filterProperty="istestproduct" autoResizable="true">
+										<Label id="idLabelTestproduct" text="{i18n>columnWebTestproduct}"/>
+										<ui:template>
+											<ObjectIdentifier text="{ path : 'modelOdatav4>istestproduct', formatter: '.formatter.formatWebInfos'}"/>
+										</ui:template>
+									</ui:Column>
+								</ui:columns>
+							</ui:Table>
+						</xp:blocks>
+					</xp:ObjectPageSubSection>
+				</xp:subSections>
+			</xp:ObjectPageSection>
+		</xp:sections>
+	</xp:ObjectPageLayout>
+</mvc:View>

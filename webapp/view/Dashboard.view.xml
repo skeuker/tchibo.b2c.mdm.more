@@ -1,0 +1,34 @@
+<mvc:View controllerName="tchibo.b2c.mdm.more.ui.controller.Dashboard" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.m.semantic">
+	<semantic:FullscreenPage id="idPageDashboard" busy="{worklist>/loadBusy}">
+		<semantic:content>
+			<Toolbar id="idToolbarDashboard" design="Transparent">
+				<Title id="idToolbarDashboardTitle" text="{i18n>dashboardToolbarTitle}" titleStyle="H2"/>
+				<Button id="idToolbarDashboardButton" text="{i18n>dashboardToolbarButton}" press=".onNavigateWorklistNoFilter"/>
+			</Toolbar>
+			<Toolbar id="idToolbarProcess">
+				<Title id="idToolbarProcessTitle" text="{i18n>toolbarTitleProcess}" titleStyle="H3" class="sapUiSmallMarginBegin"/>
+			</Toolbar>
+			<IconTabBar id="idIconTabBarProcess" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="idIconTabFilterProcess" key="keyIconTabFilterProcess" text="{i18n>iconTabFilterTextProcessTile}">
+						<core:Fragment id="idFragmentDashboardProcessTile" fragmentName="tchibo.b2c.mdm.more.ui.view.fragments.DashboardProcessTile" type="XML"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			<Toolbar id="idToolbarError">
+				<Title id="idToolbarErrorTitle" text="{i18n>toolbarTitleError}" titleStyle="H3" class="sapUiSmallMarginBegin"/>
+			</Toolbar>
+			<IconTabBar id="idIconTabBarError" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="idIconTabFilterError" key="keyIconTabFilterError" text="{i18n>iconTabFilterTextErrorTile}">
+						<core:Fragment id="idFragmentDashboardErrorTile" fragmentName="tchibo.b2c.mdm.more.ui.view.fragments.DashboardErrorTile" type="XML"/>
+					</IconTabFilter>
+					<IconTabFilter id="idErrorTable" key="keyErrorTable" text="{i18n>iconTabFilterTextErrorTable}">
+						<core:Fragment id="idFragmentDashboardErrorTable" fragmentName="tchibo.b2c.mdm.more.ui.view.fragments.DashboardErrorDetail" type="XML"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

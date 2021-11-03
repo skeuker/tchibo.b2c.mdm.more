@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Panel id="idPanelErrorDatail" height="100%" width="100%" backgroundDesign="Transparent">
+		<layout:Grid id="idGridErrorDetail" containerQuery="true" defaultSpan="XL12 L12 M12 S12" width="100%">
+			<layout:VerticalLayout id="idVerticalLayoutError" width="100%" class="gridWrapper">
+				<FlexBox id="idFlexBoxErrorDetail" alignItems="Center" alignContent="Center" direction="Row" renderType="Bare" wrap="Wrap" width="100%"
+					displayInline="true" fitContainer="true" busy="{dashboard>/busyErrorDetail}" busyIndicatorDelay="{dashboard>/busyIndicator}"
+					items="{path: 'modelOdatav4>/DashboardDetails', events : {dataReceived: '.onDataRequestedErrorDetail'}}">
+					<items>
+						<GenericTile id="idGenericTileErrorDetail"
+							header="{ parts : ['modelOdatav4>clusterError', 'modelOdatav4>clusterType'], formatter: '.formatter.getTileHeader'}"
+							ariaLabel="{modelOdatav4>clusterType}" additionalTooltip="{modelOdatav4>clusterError}"
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" press=".onNavigateWorklist($event, 'clusterDetail')" width="9.5%">
+							<TileContent id="idTileContentErrorDetail" footer="{ path : 'modelOdatav4>countMatnr'} {i18n>tileContentUnitError}">
+								<NumericContent id="idNumericContentErrorDetail" scale="{i18n>errorTileScale}" value="{ path : 'modelOdatav4>distinctCountMatnr'}"
+									valueColor="{path : 'modelOdatav4>clusterType', formatter: '.formatter.getTileNumberColor'}" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+					</items>
+				</FlexBox>
+			</layout:VerticalLayout>
+		</layout:Grid>
+	</Panel>
+</core:FragmentDefinition>

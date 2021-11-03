@@ -1,0 +1,115 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ui="sap.ui.table">
+	<ui:Table id="idWorklistTable" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop" enableColumnReordering="false" editable="false"
+		selectionMode="None" visibleRowCountMode="Auto" threshold='99999' showColumnVisibilityMenu="true" enableBusyIndicator="true">
+		<ui:extension>
+			<OverflowToolbar class="sapUiSmallMarginBottom">
+				<Title id="idTableTitle" text="{i18n>worklistTableTitle} ({worklistView>/tableTitleRowCount})"/>
+				<ToolbarSpacer/>
+				<Button id="idButtonDataExport" icon="sap-icon://excel-attachment" tooltip="{i18n>tooltipDataExport}" press=".onPressDataExport"/>
+				<Button id="idButtonP13NDialog" icon="sap-icon://sort" tooltip="{i18n>tooltipSort}" press=".onPressOpenP13nDialog"/>
+			</OverflowToolbar>
+		</ui:extension>
+		<ui:columns>
+			<ui:Column id="idColumnTypeMessage" width="2%" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="clusterType"
+				filterProperty="clusterType" autoResizable="true">
+				<!--<Label id="idLabelTypeMessage" text="{i18n>tableColumnTypeMessage}"/>-->
+				<ui:template>
+					<core:Icon src="{ path : 'modelOdatav4>clusterType', formatter: '.formatter.getMessageIcon'}"
+						color="{ path : 'modelOdatav4>clusterType', formatter: '.formatter.formatWorklistIcons'}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnOrderNumber" width="auto" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="tdbnr"
+				filterProperty="tdbnr" autoResizable="true">
+				<Label id="idLabelOrderNumber" text="{i18n>tableColumnOrderNumber}"/>
+				<ui:template>
+					<ObjectNumber number="{modelOdatav4>tdbnr}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnArticleNumber" width="auto" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="matnr"
+				filterProperty="matnr" autoResizable="true">
+				<Label id="idLabelArticleNumber" text="{i18n>tableColumnArticleNumber}"/>
+				<ui:template>
+					<ObjectNumber
+						number="{ path: 'modelOdatav4>matnr', type: 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 18}}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnArticleDescription" width="17%" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="maktx"
+				filterProperty="maktx" autoResizable="true">
+				<Label id="idLabelArticleDescription" text="{i18n>tableColumnArticleDescription}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>maktx}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnMessageCluster" width="10%" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="clusterError"
+				filterProperty="clusterError" autoResizable="true">
+				<Label id="idLabelMessageCluster" text="{i18n>tableColumnMessageCluster}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>clusterError}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnMessage" width="15%" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="errors"
+				filterProperty="errors" autoResizable="true">
+				<Label id="idLabelMessage" text="{i18n>tableColumnMessage}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>errors}"/>
+				</ui:template>
+			</ui:Column>
+			<!--		<ui:Column id="idColumnMessageNumber" width="auto" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="rankError"
+				filterProperty="error" autoResizable="true">
+				<Label id="idLabelMessageCount" text="{i18n>idColumnMessageCount}"/>
+				<ui:template>
+					<ObjectIdentifier text="{i18n>tableColumnCountError} ({modelOdatav4>sumError}) {i18n>tableColumnCountWarning} ({modelOdatav4>sumWarning})"/>
+				</ui:template>
+			</ui:Column> -->
+			<ui:Column id="idColumnVkorg" width="5%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="vkorg"
+				filterProperty="vkorg">
+				<Label id="idLabelVkorg" text="{i18n>tableColumnVkorg}"/>
+				<ui:template>
+					<ObjectNumber number="{modelOdatav4>vkorg}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnHvk" width="5%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="kalwo"
+				filterProperty="kalwo">
+				<Label id="idLabelHvk" text="{i18n>tableColumnHvk}"/>
+				<ui:template>
+					<ObjectNumber number="{ path : 'modelOdatav4>kalwo'}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnPackaging" width="5%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="magrv"
+				filterProperty="magrv">
+				<Label id="idLabelPackaging" text="{i18n>tableColumnPackaging}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>magrv}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnProcess" width="9%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="kanal"
+				filterProperty="kanal">
+				<Label id="idLabelProcess" text="{i18n>tableColumnProcess}"/>
+				<ui:template>
+					<ObjectIdentifier text="{path: 'modelOdatav4>kanal', formatter: '.formatter.getPHType'}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnArticleType" width="5%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="mtart"
+				filterProperty="mtart">
+				<Label id="idLabelArticleType" text="{i18n>tableColumnArticleType}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>mtart}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnFwRe" width="3%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true" sortProperty="atyp"
+				filterProperty="atyp">
+				<Label id="idLabelFwRe" text="{i18n>tableColumnFwRe}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>atyp}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnonlineOnly" width="2%" autoResizable="true" showSortMenuEntry="true" showFilterMenuEntry="true"
+				sortProperty="onlineOnly" filterProperty="onlineOnly">
+				<Label id="idLabelOnlineOnly" text="{i18n>tableColumnOnlineOnly}"/>
+				<ui:template>
+					<ObjectIdentifier text="{modelOdatav4>onlineOnly}"/>
+				</ui:template>
+			</ui:Column>
+		</ui:columns>
+	</ui:Table>
+</core:FragmentDefinition>

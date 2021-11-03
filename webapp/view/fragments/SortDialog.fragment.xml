@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<P13nDialog ok="handleOkP13n" cancel="handleCancelP13n" reset="handleResetP13n" showReset="false"
+		showResetEnabled="{worklistView>/enabled/p13nReset}">
+		<panels id="sortPanel">
+			<P13nSortPanel visible="true" type="sort" containerQuery="true" items="{ path: 'appView>/ColumnCollection' }"
+				sortItems="{ path: 'worklistView>/SortItems' }" addSortItem=".addSortItemP13n" removeSortItem=".removeSortItemP13n">
+				<P13nItem columnKey="{appView>path}" text="{appView>text}"/>
+				<sortItems>
+					<P13nSortItem columnKey="{worklistView>columnKeyModel}" operation="{worklistView>operationModel}"/>
+				</sortItems>
+			</P13nSortPanel>
+		</panels>
+	</P13nDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:ui="sap.ui.table">
+	<ui:Table id="idDashboardProcessTable" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop" enableColumnReordering="false" editable="false"
+		selectionMode="None" visibleRowCount="4" showColumnVisibilityMenu="true" enableBusyIndicator="true">
+		<ui:extension>
+			<OverflowToolbar id="idOverFlowToolbarProcessTable" class="sapUiSmallMarginBottom">
+				<ToolbarSpacer id="idToolbarSpacerProcessTable"/>
+				<Label id="idLabelDashboardProcessVkorg" text="Verkaufs-Org.:"/>
+				<core:Fragment id="idFragmentselectVkorg" fragmentName="tchibo.b2c.mdm.more.ui.view.fragments.DashboardSelectVkorg" type="XML"/>
+			</OverflowToolbar>
+		</ui:extension>
+		<ui:columns>
+			<ui:Column id="idColumnProcess" width="auto" hAlign="Center">
+				<ui:template>
+					<ObjectIdentifier id="idObjectAttribute" title="{modelOdatav4>process}"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnAvailable" width="auto" hAlign="Center">
+				<ObjectIdentifier id="idObjectAvailabilityTitle" title="{i18n>tableColumnAvailable}"/>
+				<ui:template>
+					<l:HorizontalLayout id="idHorizontalLayoutavailable" class="sapUiContentPadding">
+						<ObjectNumber id="idObjectAttributeAvailable" number="{modelOdatav4>available}" unit="{i18n>processTileScale}"/>
+					</l:HorizontalLayout>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnNotAvailable" width="auto" hAlign="Center">
+				<ObjectIdentifier id="idObjectNotAvailableProcentTitle" title="{i18n>tableColumnNotAvailableProcent}"/>
+				<ui:template>
+					<l:HorizontalLayout id="idHorizontalLayoutNotAvailable" class="sapUiContentPadding">
+						<ObjectNumber id="idObjectNotAvailable" number="{modelOdatav4>notAvailable}" unit="{i18n>processTileScale}"/>
+						<ObjectNumber id="idObjectNotAvailableProcent" number="{modelOdatav4>notAvailableProcent}" unit="{i18n>processTileScalePercent}"/>
+					</l:HorizontalLayout>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnAvailableAuth" width="auto" hAlign="Center">
+				<ObjectIdentifier id="idObjectAvailableAuthProcentTirle" title="{i18n>tableColumnAvailableAuthProcent}"/>
+				<ui:template>
+					<l:HorizontalLayout id="idHorizontalLayoutAvailableAuthProcent" class="sapUiContentPadding">
+						<ObjectNumber id="idObjectAvailableAuth" number="{modelOdatav4>availableAuth}" unit="{i18n>processTileScale}"/>
+						<ObjectNumber id="idObjectAvailableAuthProcent" number="{modelOdatav4>availableAuthProcent}" unit="{i18n>processTileScalePercent}"/>
+					</l:HorizontalLayout>
+				</ui:template>
+			</ui:Column>
+			<ui:Column id="idColumnAvailableNotAuth" width="auto" hAlign="Center">
+				<ObjectIdentifier id="idObjectAvailableNotAuthProcentTitle" title="{i18n>tableColumnAvailableNotAuthProcent}"/>
+				<ui:template>
+					<l:HorizontalLayout id="idHorizontalLayoutAvailableNotAuthProcent" class="sapUiContentPadding">
+						<ObjectNumber id="idObjectAvailableNotAuth" number="{modelOdatav4>availableNotAuth}" unit="{i18n>processTileScale}"/>
+						<ObjectNumber id="idObjectAvailableNotAuthProcent" number="{modelOdatav4>availableNotAuthProcent}" unit="{i18n>processTileScalePercent}"/>
+					</l:HorizontalLayout>
+				</ui:template>
+			</ui:Column>
+		</ui:columns>
+	</ui:Table>
+</core:FragmentDefinition>
